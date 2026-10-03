@@ -1,0 +1,92 @@
+#include <iostream>
+using namespace std;
+
+class Queue
+{
+    public:
+    int arr[5];
+    int front, rear;
+
+    Queue()
+    {
+        front = -1;
+        rear = -1;
+    }
+
+    bool isEmpty()
+    {
+        return (front == -1 || front > rear);
+    }
+
+    bool isFull()
+    {
+        return (rear == 4);
+    }
+
+    void enqueue(int x)
+    {
+        if(isFull())
+        {
+            cout<<"Queue is full!"<<endl;
+            return;
+        }
+        if(front = -1)
+        {
+            front = 0;
+        }
+        rear ++;
+        arr[rear] = x;
+    }
+
+    void dequeue()
+    {
+        if(isEmpty())
+        {
+            cout<<"Queue is empty"<<endl;
+            return;
+        }
+
+        cout<<"Deleted: "<<arr[front]<<endl;
+        front++;
+    }
+
+    void Display()
+    {
+        if(isEmpty())
+        {
+            cout<<"Queue is empty"<<endl;
+            return;
+        }
+
+        for(int i = front ; i <= rear; i++)
+        {
+            cout<<arr[i];
+            cout<<" ";
+        }
+        cout<<endl;
+    }
+};
+
+int main()
+{
+    Queue q1;
+    q1.Display();
+    cout<<"Enqueuing values: "<<endl;
+    q1.enqueue(10);
+    q1.enqueue(20);
+    q1.enqueue(30);
+    q1.enqueue(40);
+    q1.enqueue(50);
+    q1.Display();
+    
+    cout<<"Trying to enqueue past limit: "<<endl;
+    q1.enqueue(60);
+
+    q1.dequeue();
+    q1.dequeue();
+
+    q1.Display();
+
+    return 0;
+
+}
